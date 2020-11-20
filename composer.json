@@ -9,11 +9,13 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5|^8.0",
-        "caouecs/laravel-lang": "~4.0",
         "encore/laravel-admin": "1.*",
         "fideloper/proxy": "^4.4",
+        "laravel-admin-ext/ckeditor": "^1.0",
+        "laravel-lang/lang": "~5.0",
         "laravel/framework": "^6.20",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "php-parallel-lint/php-console-color": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",
