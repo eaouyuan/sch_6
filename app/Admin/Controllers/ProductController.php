@@ -83,6 +83,9 @@ class ProductController extends AdminController
         $form->switch('on_sale', __('On sale'))->states($states)->default(1);
         $form->number('price', __('Price'));
 
+        $form->confirm('确定更新吗？', 'edit');
+
         return $form;
     }
+
 }
