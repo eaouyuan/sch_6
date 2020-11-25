@@ -60,8 +60,13 @@ class ProductController extends Controller
 
     // }
     public function show(Product $product)
+    // public function show($id)
     {
-        // var_dump($product);die();
+        $product = Product::find($product->id);
+        if (!$product->on_sale) {
+            throw new Exception('商品未上架');
+        }
+        // var_export($product);die();
         return view('product.show', compact('product'));
     }
 
