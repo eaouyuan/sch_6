@@ -21,6 +21,9 @@ Route::get('/product', 'ProductController@index')->name('product.index');
 // Route::get('/product/{id}', 'ProductController@show')->name('product.show');
 Route::get('/product/{product}', 'ProductController@show')->name('product.show');
 
+// 新增購物車路由
+Route::post('/cart', 'CartController@store')->name('cart.store');
+
 // Route::get('/', function () {
 //     return view('product.index');
 // });
