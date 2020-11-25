@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use Exception;
-use Illuminate\Http\Request;
 use App\Exceptions\CustomException;
+use App\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -65,7 +64,7 @@ class ProductController extends Controller
     {
         $product = Product::find($product->id);
         if (!$product->on_sale) {
-            throw new Exception('商品未上架');
+            throw new CustomException('商品未上架');
         }
         // var_export($product);die();
         return view('product.show', compact('product'));
