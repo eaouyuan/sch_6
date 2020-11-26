@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Http\Requests\CartRequest;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -12,9 +13,12 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // 講義有錯，寫成store()
+        Cart::create($request->all());
+        return redirect()->route('cart.index');
+
     }
 
     /**
@@ -33,9 +37,26 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(CartRequest $request)
     {
-        //
+        //1126 add
+        // $cart             = new Cart;
+        // $cart->user_id    = $request->user()->id;
+        // $cart->product_id = $request->product_id;
+        // $cart->amount     = $request->amount;
+        // $cart->save();
+
+        // 用 fillable 批量賦值寫入 https: //campus-xoops.tn.edu.tw/modules/tad_book3/page.php?tbsn=43&tbdsn=1443
+        Cart::create([
+            'user_id'    => $request->user()->id,
+            'product_id' => $request->product_id,
+            'amount'     => $request->amount,
+        ]);
+
+        // return $request->user();
+        return [];
+
     }
 
     /**
