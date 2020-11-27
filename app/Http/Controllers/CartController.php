@@ -15,9 +15,14 @@ class CartController extends Controller
      */
     public function index(Request $request)
     {
-        // 講義有錯，寫成store()
-        Cart::create($request->all());
-        return redirect()->route('cart.index');
+        // ch16
+        $carts = $request->user()->carts()->get();
+        return view('cart.index', compact('carts'));
+
+        // ch15 講義有錯，寫成store()
+        // 批量賦值 https: //learnku.com/docs/laravel/6.x/eloquent/5176
+        // Cart::create($request->all());
+        // return redirect()->route('cart.index');
 
     }
 

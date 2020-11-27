@@ -22,8 +22,8 @@ Route::get('/product', 'ProductController@index')->name('product.index');
 Route::get('/product/{product}', 'ProductController@show')->name('product.show');
 
 // 新增購物車路由
-Route::post('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart/store', 'CartController@store')->name('cart.store');
+Route::get('/cart', 'CartController@index')->name('cart.index');
 
 // Route::get('/', function () {
 //     return view('product.index');
@@ -34,7 +34,7 @@ Route::post('/cart/store', 'CartController@store')->name('cart.store');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ProductController@index')->name('home');
 
 /*
 Route::get('/', function () {
