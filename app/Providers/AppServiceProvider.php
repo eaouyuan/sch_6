@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+// 講義15-7 未寫
+use App\Cart;
+use App\Observers\CartObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // 新增購物車觀察器
+        Cart::observe(CartObserver::class);
+
     }
 }

@@ -13,7 +13,9 @@ class CartObserver
      * @param  \App\Cart  $cart
      * @return void
      */
-    public function created(Cart $cart)
+
+    // 1127 原本是created及updated
+    public function creating(Cart $cart)
     {
         //
         if (Auth::check()) {
@@ -28,7 +30,7 @@ class CartObserver
      * @param  \App\Cart  $cart
      * @return void
      */
-    public function updated(Cart $cart)
+    public function updating(Cart $cart)
     {
         //
         if (Auth::check()) {

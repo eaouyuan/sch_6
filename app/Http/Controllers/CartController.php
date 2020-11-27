@@ -48,12 +48,20 @@ class CartController extends Controller
         // $cart->save();
 
         // 用 fillable 批量賦值寫入 https: //campus-xoops.tn.edu.tw/modules/tad_book3/page.php?tbsn=43&tbdsn=1443
-        Cart::create([
-            'user_id'    => $request->user()->id,
-            'product_id' => $request->product_id,
-            'amount'     => $request->amount,
-        ]);
-
+        // Cart::create([
+        //     'user_id'    => $request->user()->id,
+        //     'product_id' => $request->product_id,
+        //     'amount'     => $request->amount,
+        // ]);
+        // 從資料庫中查詢該商品是否已經在購物車中，如果存在則直接疊加商品數量
+        if ($cart = $request->user()->carts()->where('product_id', $request->product_id)->first()) {
+            $cart->update([
+                'amount' => $cart->amount + $request->amount,
+            ]);
+        } else {
+            // 15-7
+            Cart::create($request->all());
+        }
         // return $request->user();
         return [];
 
