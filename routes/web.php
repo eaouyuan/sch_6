@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,6 +11,11 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
+//
+// if (!Auth::check()) {
+//     // 這個用戶沒有登錄...
+//     return route('login');
+// }
 
 // 20201123 要修改路由讓首頁呈現品列表
 
