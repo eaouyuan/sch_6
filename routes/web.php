@@ -16,6 +16,10 @@
 //商品路由request
 // Route::pattern('id', '[0-9]+');
 Route::pattern('product', '[0-9]+');
+
+// 16-2
+Route::pattern('id', '[0-9]+');
+
 Route::get('/', 'ProductController@index')->name('index');
 Route::get('/product', 'ProductController@index')->name('product.index');
 // Route::get('/product/{id}', 'ProductController@show')->name('product.show');
@@ -24,6 +28,8 @@ Route::get('/product/{product}', 'ProductController@show')->name('product.show')
 // 新增購物車路由
 Route::post('/cart/store', 'CartController@store')->name('cart.store');
 Route::get('/cart', 'CartController@index')->name('cart.index');
+// 16-2
+Route::delete('/cart/{id}', 'CartController@destroy')->name('cart.destroy');
 
 // Route::get('/', function () {
 //     return view('product.index');

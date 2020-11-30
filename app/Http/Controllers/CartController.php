@@ -15,9 +15,14 @@ class CartController extends Controller
      */
     public function index(Request $request)
     {
+        // 16-1
+        $user = $request->user();
+        return view('cart.index', compact('user'));
+        // return var_dump($user);
+
         // ch16
-        $carts = $request->user()->carts()->get();
-        return view('cart.index', compact('carts'));
+        // $carts = $request->user()->carts()->get();
+        // return view('cart.index', compact('carts'));
 
         // ch15 講義有錯，寫成store()
         // 批量賦值 https: //learnku.com/docs/laravel/6.x/eloquent/5176
@@ -112,8 +117,9 @@ class CartController extends Controller
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cart $cart)
+    public function destroy($id, Request $request)
     {
-        //
+        $request->user()->carts()->where('product_id', $id)->delete();
+        return [];
     }
 }
