@@ -31,6 +31,11 @@ Route::get('/cart', 'CartController@index')->name('cart.index');
 // 16-2
 Route::delete('/cart/{id}', 'CartController@destroy')->name('cart.destroy');
 
+// 17-3 送出訂單按鈕
+Route::post('/order/store', 'OrderController@store')->name('order.store');
+// 17-4 訂單列表
+Route::get('/order', 'OrderController@index')->name('order.index');
+
 // Route::get('/', function () {
 //     return view('product.index');
 // });
